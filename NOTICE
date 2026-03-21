@@ -1,0 +1,4 @@
+This package implements WebView embedding for Lynx. API and behavior are informed by
+the MIT-licensed react-native-webview project (https://github.com/react-native-webview/react-native-webview),
+vendored under reference/react-native-webview in this repository. Native code is written
+for Lynx LynxUI and is not a derivative of react-native-webview’s React Native bridge sources.

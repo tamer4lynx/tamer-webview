@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml:2:13-83
+INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml:2:13-83
+	package
+		INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml
+	xmlns:android
+		ADDED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml:2:23-81
+uses-sdk
+INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml reason: use-sdk injection requested
+INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml
+INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml
+	android:targetSdkVersion
+		INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml
+	android:minSdkVersion
+		INJECTED from /Volumes/Storage/Projects/t4test/node_modules/@tamer4lynx/tamer-webview/android/build/intermediates/tmp/ProcessLibraryManifest/debug/tempAndroidManifest10724715365202163180.xml

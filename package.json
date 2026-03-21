@@ -1,0 +1,61 @@
+{
+  "name": "@tamer4lynx/tamer-webview",
+  "publishConfig": {
+    "access": "public",
+    "tag": "prerelease"
+  },
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Embedded WebView custom element for Lynx (iOS WKWebView, Android WebView).",
+  "main": "dist/index.jsx",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.jsx",
+      "default": "./dist/index.jsx"
+    },
+    "./tamer.config": {
+      "types": "./dist/tamer.config.d.ts",
+      "import": "./dist/tamer.config.js",
+      "default": "./dist/tamer.config.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "android/src",
+    "android/build.gradle.kts",
+    "ios",
+    "lynx.ext.json",
+    "NOTICE"
+  ],
+  "lynx": {
+    "ext": "lynx.ext.json"
+  },
+  "peerDependencies": {
+    "@lynx-js/react": ">=0.100.0",
+    "react": "^17.0.0"
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@lynx-js/react": "^0.112.1",
+    "@lynx-js/types": "3.3.0",
+    "@types/react": "^17.0.0",
+    "react": "^17.0.2",
+    "typescript": "~5.8.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Nanofuxion",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tamer4lynx/tamer4lynx.git",
+    "directory": "packages/tamer-webview"
+  },
+  "license": "MIT"
+}

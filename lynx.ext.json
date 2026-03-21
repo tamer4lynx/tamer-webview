@@ -1,0 +1,17 @@
+{
+  "platforms": {
+    "android": {
+      "packageName": "com.nanofuxion.tamerwebview",
+      "sourceDir": "android",
+      "elements": {
+        "webview": "com.nanofuxion.tamerwebview.TamerWebViewElement"
+      }
+    },
+    "ios": {
+      "podspecPath": "ios/tamerwebview",
+      "elements": {
+        "webview": "TamerWebViewElement"
+      }
+    }
+  }
+}
