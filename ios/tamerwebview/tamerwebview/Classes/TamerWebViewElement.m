@@ -26,6 +26,19 @@ static NSString *const kBridgePolyfill =
 @property(nonatomic, weak) TamerWebViewElement *owner;
 @end
 
+@interface TamerWebViewHostView : UIView
+@property(nonatomic, weak) WKWebView *hostedWebView;
+@end
+
+@implementation TamerWebViewHostView
+
+- (void)layoutSubviews {
+  [super layoutSubviews];
+  self.hostedWebView.frame = self.bounds;
+}
+
+@end
+
 @interface TamerWebViewElement () <WKNavigationDelegate, WKUIDelegate>
 @property(nonatomic, strong) WKWebView *webView;
 @property(nonatomic, copy, nullable) NSString *uri;
@@ -37,6 +50,7 @@ static NSString *const kBridgePolyfill =
 @property(nonatomic, assign) BOOL messagingEnabled;
 @property(nonatomic, copy, nullable) NSString *userAgentOverride;
 @property(nonatomic, strong) TamerWebViewWeakScriptDelegate *scriptBridge;
+- (void)handleScriptMessageBody:(id)body;
 @end
 
 @implementation TamerWebViewWeakScriptDelegate
@@ -139,17 +153,29 @@ static NSString *const kBridgePolyfill =
   WKWebView *wv = [[WKWebView alloc] initWithFrame:CGRectZero configuration:config];
   wv.navigationDelegate = self;
   wv.UIDelegate = self;
-  wv.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   wv.backgroundColor = [UIColor clearColor];
+  wv.opaque = NO;
   wv.scrollView.backgroundColor = [UIColor clearColor];
+  if (@available(iOS 11.0, *)) {
+    wv.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+  }
+#if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+  if (@available(iOS 13.0, *)) {
+    wv.scrollView.automaticallyAdjustsScrollIndicatorInsets = NO;
+  }
+#endif
 
-  // Custom user agent
   NSString *ua = self.userAgentOverride.length > 0 ? self.userAgentOverride : kDefaultUA;
   wv.customUserAgent = ua;
 
   self.webView = wv;
   [self applyContent];
-  return wv;
+
+  TamerWebViewHostView *host = [[TamerWebViewHostView alloc] initWithFrame:CGRectZero];
+  host.clipsToBounds = YES;
+  host.hostedWebView = wv;
+  [host addSubview:wv];
+  return host;
 }
 
 - (void)layoutDidFinished {

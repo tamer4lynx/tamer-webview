@@ -4,7 +4,7 @@
     "access": "public",
     "tag": "prerelease"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Embedded WebView custom element for Lynx (iOS WKWebView, Android WebView).",
   "main": "dist/index.jsx",
@@ -19,6 +19,11 @@
       "types": "./dist/tamer.config.d.ts",
       "import": "./dist/tamer.config.js",
       "default": "./dist/tamer.config.js"
+    },
+    "./webview-jsx": {
+      "types": "./dist/webview-jsx.d.ts",
+      "import": "./dist/webview-jsx.js",
+      "default": "./dist/webview-jsx.js"
     }
   },
   "files": [
@@ -33,12 +38,16 @@
   "lynx": {
     "ext": "lynx.ext.json"
   },
+  "tamer": {
+    "ambientTypeExports": ["./webview-jsx"]
+  },
   "peerDependencies": {
     "@lynx-js/react": ">=0.100.0",
+    "@lynx-js/types": ">=3.3.0",
     "react": "^17.0.0"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc && node ./scripts/patch-index-dts.mjs",
     "prepare": "npm run build"
   },
   "devDependencies": {

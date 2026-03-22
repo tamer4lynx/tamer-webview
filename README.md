@@ -19,10 +19,10 @@ t4l link
 
 ## Basic usage
 
-```tsx
-import { WebView } from '@tamer4lynx/tamer-webview'
+After **`t4l link`**, **`.tamer/tamer-components.d.ts`** pulls in **`webview-jsx.d.ts`** so **`<webview>`** is typed—no side-effect import needed for typings.
 
-<WebView
+```tsx
+<webview
   uri="https://example.com"
   style={{ flex: 1, width: '100%' }}
   bindload={(e) => console.log(e.detail.url)}
@@ -33,13 +33,7 @@ import { WebView } from '@tamer4lynx/tamer-webview'
 Load inline HTML instead of a URL:
 
 ```tsx
-<WebView html="<h1>Hello</h1>" baseUrl="https://example.com/" />
-```
-
-Or use the native tag directly (no React wrapper):
-
-```tsx
-<webview uri="https://example.com" style={{ flex: 1 }} />
+<webview html="<h1>Hello</h1>" baseUrl="https://example.com/" />
 ```
 
 When both `uri` and `html` are provided, `uri` takes priority.
@@ -56,7 +50,7 @@ When both `uri` and `html` are provided, `uri` takes priority.
 | `injectedJavaScriptBeforeContentLoaded` | `string` | — | Script evaluated before the page's own scripts run |
 | `messagingEnabled` | `boolean` | `true` | Expose `window.ReactNativeWebView.postMessage` to the page |
 | `userAgent` | `string` | Chrome Mobile UA | Override the WebView user agent string |
-| `style` | `CSSProperties` | — | Lynx style object |
+| `style` | `string \| CSSProperties` | — | Lynx style object or class string |
 | `className` | `string` | — | CSS class name |
 | `id` | `string` | — | Element ID for `lynx.createSelectorQuery()` |
 | `bindload` | `(e) => void` | — | Fired when a page finishes loading |
@@ -163,7 +157,7 @@ callWebViewMethod(wvRef, 'injectJavaScript', { script: 'window.scrollTo(0, 0)' }
 
 ## Imperative methods
 
-All methods are called via [`NodesRef.invoke`](https://lynxjs.org/api/lynx-api/nodes-ref/nodes-ref-invoke.md) using `callWebViewMethod`, or directly through `lynx.createSelectorQuery()`.
+All methods are called via [`NodesRef.invoke`](https://lynxjs.org/api/lynx-api/nodes-ref/nodes-ref-invoke.html) using `callWebViewMethod`, or directly through `lynx.createSelectorQuery()`.
 
 | Method | Params | Description |
 |--------|--------|-------------|
@@ -189,5 +183,5 @@ callWebViewMethod(ref, 'injectJavaScript', { script: 'alert("hi")' })
 ## See also
 
 - [Custom Element — Lynx docs](https://lynxjs.org/guide/custom-native-component.md)
-- [NodesRef `invoke`](https://lynxjs.org/api/lynx-api/nodes-ref/nodes-ref-invoke.md)
+- [NodesRef `invoke`](https://lynxjs.org/api/lynx-api/nodes-ref/nodes-ref-invoke.html)
 - [react-native-webview](https://github.com/react-native-webview/react-native-webview) — API reference this package is modelled after
